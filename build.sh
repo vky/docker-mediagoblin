@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --rm -t _vky/mediagoblin:latest .
+docker build --rm -t local/mediagoblin:latest .
