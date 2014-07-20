@@ -23,6 +23,8 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get install -y postgresql postgresql-client python-psycopg2
 
+RUN apt-get update && apt-get upgrade -y
+
 # MediaGoblin code and setup
 RUN mkdir -p /srv/mediagoblin.example.org
 WORKDIR /srv/mediagoblin.example.org
