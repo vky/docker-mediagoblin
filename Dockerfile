@@ -1,9 +1,9 @@
-FROM ubuntu:trusty
+FROM debian:jessie
 MAINTAINER Vijay Korapaty <mediagoblin@korapaty.com>
 
 # Base requirements
-RUN apt-get update \
-    && apt-get install -y git-core python python-dev \
+RUN apt-get update && \
+    apt-get install -y sudo git-core python python-dev \
     python-lxml python-imaging python-virtualenv
 
 # Video and audio requirements
