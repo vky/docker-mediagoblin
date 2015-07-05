@@ -40,7 +40,8 @@ WORKDIR /srv/mediagoblin.example.org/mediagoblin
 RUN git submodule init && git submodule update
 RUN (virtualenv --system-site-packages . || virtualenv .) \
     && ./bin/python setup.py develop
-## For spectrograms of audio
+
+# For spectrograms of audio
 RUN ./bin/pip install scikits.audiolab
 
 ADD mediagoblin_local.ini /srv/mediagoblin.example.org/mediagoblin/mediagoblin_local.ini
