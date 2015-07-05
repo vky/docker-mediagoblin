@@ -28,7 +28,7 @@ RUN apt-get update && apt-get upgrade -y
 # MediaGoblin code and setup
 RUN mkdir -p /srv/mediagoblin.example.org
 WORKDIR /srv/mediagoblin.example.org
-RUN git clone git://gitorious.org/mediagoblin/mediagoblin.git
+RUN git clone git://git.savannah.gnu.org/mediagoblin.git -b stable --depth 1
 WORKDIR /srv/mediagoblin.example.org/mediagoblin
 RUN git submodule init && git submodule update
 RUN (virtualenv --system-site-packages . || virtualenv .) \
