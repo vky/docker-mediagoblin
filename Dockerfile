@@ -25,10 +25,17 @@ RUN apt-get update \
 
 RUN apt-get update && apt-get upgrade -y
 
+# Drop Privileges for MediaGoblin
+RUN useradd -c "GNU MediaGoblin system account" -d /var/lib/mediagoblin \
+    -m -r -g www-data mediagoblin
+RUN groupadd mediagoblin
+RUN usermod --append -G mediagoblin mediagoblin
+
 # MediaGoblin code and setup
 RUN mkdir -p /srv/mediagoblin.example.org
 WORKDIR /srv/mediagoblin.example.org
 RUN git clone git://git.savannah.gnu.org/mediagoblin.git -b stable --depth 1
+RUN chown -hR mediagoblin:www-data /srv/mediagoblin.example.org
 WORKDIR /srv/mediagoblin.example.org/mediagoblin
 RUN git submodule init && git submodule update
 RUN (virtualenv --system-site-packages . || virtualenv .) \
