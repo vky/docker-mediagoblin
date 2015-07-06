@@ -7,12 +7,16 @@ RUN apt-get update && \
     python-lxml python-imaging python-virtualenv
 
 # Video and audio requirements
-RUN apt-get update \
-    && apt-get install -y python-gst0.10 gstreamer1.0-libav \
-    gstreamer0.10-plugins-base \
-    gstreamer0.10-plugins-bad \
-    gstreamer0.10-plugins-good \
-    gstreamer0.10-plugins-ugly
+RUN apt-get update && \
+    apt-get install -y \
+        python-gst-1.0 \
+        gstreamer1.0-libav \
+        gstreamer1.0-plugins-base \
+        gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-good \
+        gstreamer1.0-plugins-ugly \
+        gir1.2-gstreamer-1.0 \
+        gir1.2-gst-plugins-base-1.0
 
 # Additional audio requirements
 RUN apt-get update \
