@@ -4,7 +4,8 @@ MAINTAINER Vijay Korapaty <mediagoblin@korapaty.com>
 # Base requirements
 RUN apt-get update && \
     apt-get install -y sudo git-core python python-dev \
-    python-lxml python-imaging python-virtualenv
+    python-lxml python-imaging python-virtualenv \
+    python3 libpython3-dev
 
 # Video and audio requirements
 RUN apt-get update && \
@@ -42,7 +43,7 @@ RUN git clone git://git.savannah.gnu.org/mediagoblin.git -b stable --depth 1
 RUN chown -hR mediagoblin:www-data /srv/mediagoblin
 WORKDIR /srv/mediagoblin/mediagoblin
 RUN git submodule init && git submodule update
-RUN (virtualenv --system-site-packages . || virtualenv .) \
+RUN (virtualenv --system-site-packages -p python3 . || virtualenv -p python3 .) \
     && ./bin/python setup.py develop
 
 # For spectrograms of audio
