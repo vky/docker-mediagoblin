@@ -5,7 +5,7 @@ MAINTAINER Vijay Korapaty <mediagoblin@korapaty.com>
 RUN apt-get update && \
     apt-get install -y sudo git-core python python-dev \
     python-lxml python-imaging python-virtualenv \
-    python3 libpython3-dev
+    python3 libpython3-dev python3-numpy
 
 # Video and audio requirements
 RUN apt-get update && \
