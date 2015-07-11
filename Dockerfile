@@ -5,12 +5,12 @@ MAINTAINER Vijay Korapaty <mediagoblin@korapaty.com>
 RUN apt-get update && \
     apt-get install -y sudo git-core python python-dev \
     python-lxml python-imaging python-virtualenv \
-    python3 libpython3-dev python3-numpy
+    python3 libpython3-dev
 
 # Video and audio requirements
 RUN apt-get update && \
     apt-get install -y \
-        python-gst-1.0 \
+        python3-gst-1.0 \
         gstreamer1.0-libav \
         gstreamer1.0-plugins-base \
         gstreamer1.0-plugins-bad \
@@ -21,12 +21,12 @@ RUN apt-get update && \
 
 # Additional audio requirements
 RUN apt-get update \
-    && apt-get install -y libasound2-dev python-numpy python-scipy \
+    && apt-get install -y libasound2-dev python3-numpy python3-scipy \
     libsndfile1-dev
 
 # Postgres
 RUN apt-get update \
-    && apt-get install -y postgresql postgresql-client python-psycopg2
+    && apt-get install -y postgresql postgresql-client python3-psycopg2
 
 RUN apt-get update && apt-get upgrade -y
 
