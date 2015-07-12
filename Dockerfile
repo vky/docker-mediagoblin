@@ -45,6 +45,15 @@ RUN git clone git://git.savannah.gnu.org/mediagoblin.git -b stable --depth 1
 RUN chown -hR mediagoblin:www-data /srv/mediagoblin
 WORKDIR /srv/mediagoblin/mediagoblin
 RUN git submodule init && git submodule update
+
+### HACK HACK HACK
+# Doing this as I don't know when v0.9 of MediaGoblin will come out.
+# Seems that v0.9 will have proper Python 3 support from what is being
+# mentioned in the tickets that come up while I try work-arounds for
+# various things.
+RUN sed -i 's/sqlalchemy<0.9.0, >0.8.0/sqlalchemy<1.1.0, >0.9.0/' setup.py
+### HACK HACK HACK
+
 RUN (virtualenv --system-site-packages -p python3 . || virtualenv -p python3 .) \
     && ./bin/python setup.py develop --upgrade
 
