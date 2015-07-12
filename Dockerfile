@@ -52,6 +52,7 @@ RUN (virtualenv --system-site-packages -p python3 . || virtualenv -p python3 .) 
 #RUN ./bin/pip install scikits.audiolab
 
 ADD mediagoblin_local.ini /srv/mediagoblin/mediagoblin/mediagoblin.ini
+ADD paste_local.ini /srv/mediagoblin/mediagoblin/paste_local.ini
 ADD entrypoint.sh /srv/mediagoblin/mediagoblin/entrypoint.sh
 
 EXPOSE 6543
