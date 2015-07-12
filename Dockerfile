@@ -48,10 +48,10 @@ RUN git submodule init && git submodule update
 RUN (virtualenv --system-site-packages -p python3 . || virtualenv -p python3 .) \
     && ./bin/python setup.py develop --upgrade
 
-# For spectrograms of audio
-RUN ./bin/pip install scikits.audiolab
+## For spectrograms of audio
+#RUN ./bin/pip install scikits.audiolab
 
-ADD mediagoblin_local.ini /srv/mediagoblin/mediagoblin/mediagoblin_local.ini
+ADD mediagoblin_local.ini /srv/mediagoblin/mediagoblin/mediagoblin.ini
 ADD entrypoint.sh /srv/mediagoblin/mediagoblin/entrypoint.sh
 
 EXPOSE 6543
